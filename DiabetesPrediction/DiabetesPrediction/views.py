@@ -33,7 +33,7 @@ def result(request):
     if prediction==[0]:
         return render(request,"negative.html")
     else :
-        con=["1","2","3","4","5","6","7","8"]
+        con=["Maintain blood sugar balance","Blood glucose self-monitoring","Have a medical follow-up","Do more physical activity","Have a personalized food program set up by a dietitian","Eat balanced meals at regular times","Do not skip meals","Adopt a varied diet"]
         con1=random.choice(con)
         cons=["","",""]
         for i in range(0,3):
