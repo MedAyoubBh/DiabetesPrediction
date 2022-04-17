@@ -1,0 +1,103 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME PAGE</title>
+    <style>
+        div{
+            color:white;
+        }
+        .main{
+            position: fixed;
+            top: 140px;
+            left: 440px;
+            width: 550px;
+            background-image: url("{% static 'DiabetesPrediction\images\img2.jpg'%}");
+            border-radius: 10px;
+            align-items: center;
+            padding: 2.5%;
+        }
+        h1{
+            color: #0086b3;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: 75px;
+        }
+        h2{
+            color: #0086bb;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 50px;
+        }
+        body{
+            background-image: url("{% static 'DiabetesPrediction\images\img4.jpg'%}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        input[type=submit],input[type=reset]{
+            background-color: #4dc3ff;
+            border: 2px;
+            color: white;
+            padding: 16px 32px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1>WELCOME TO THE PREDICT PAGE!</h1>
+    </div>
+    <div align="center" class="main">
+        <h2>Please enter the following information:</h2>
+        <form action="result">
+            <table>
+                <tr>
+                    <td align="right">Pregnancies:</td>
+                    <td align="left"><input type="text" name="Pregnancies"></td>
+                </tr>
+                <tr>
+                    <td align="right">Glucose:</td>
+                    <td align="left"><input type="text" name="Glucose"></td>
+                </tr>
+                <tr>
+                    <td align="right">Blood Pressure:</td>
+                    <td align="left"><input type="text" name="BloodPressure"></td>
+                </tr>
+                <tr>
+                    <td align="right">Skin Thickness:</td>
+                    <td align="left"><input type="text" name="SkinThickness"></td>
+                </tr>
+                <tr>
+                    <td align="right">Insulin:</td>
+                    <td align="left"><input type="text" name="Insulin"></td>
+                </tr>
+                <tr>
+                    <td align="right">BMI:</td>
+                    <td align="left"><input type="text" name="BMI"></td>
+                </tr>
+                <tr>
+                    <td align="right">Diabetes Pedigree Function:</td>
+                    <td align="left"><input type="text" name="DiabetesPedigreeFunction"></td>
+                </tr>
+                <tr>
+                    <td align="right">Age:</td>
+                    <td align="left"><input type="text" name="Age"></td>
+                </tr>
+                <tr>
+                    <td align="right"><input type="submit" value="Submit"></td>
+                    <td align="left"><input type="reset"></td>
+                </tr>
+            </table>
+        </form>
+        <form action="../">
+            <input type="submit" value="Return to home page">
+        </form>
+    </div>
+</body>
+</html>
