@@ -1,0 +1,60 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN PAGE</title>
+    <style type="text/css">
+        div{
+            color:white;
+        }
+        h1{
+            color: rgb(135, 8, 8);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 60px;
+            font-weight: bold;
+            margin-top: 200px;
+        }
+        h2{
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 400px;
+        }
+        body{
+            background-image: url("{% static 'DiabetesPrediction\images\img1.jpg'%}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        input[type=submit]{
+            background-color: #4dc3ff;
+            border: 2px;
+            color: white;
+            padding: 16px 32px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+		<div align="center">
+        <h1>Please Log In</h1>
+		<form action="home">
+            <table>
+                <tr>
+                    <td align="right" style="color: black;"><b>User name</b></td>
+                    <td align="left"><input type="text" name="username" placeholder="Username" required/></td>
+                </tr>
+                <tr>
+                    <td align="right"style="color: black;"><b>Password</b></td>
+                    <td align="left"><input type="password" name="password" placeholder="Password" required/></td>
+                </tr>
+            </table>
+			<input type="submit" value="Login" name="login" />
+		</form>
+</body>
+</html>
