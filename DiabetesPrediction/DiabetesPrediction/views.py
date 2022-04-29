@@ -1,11 +1,29 @@
 import random
 from django.shortcuts import redirect, render
+from jinja2 import undefined
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 
+import psycopg2
+
+
+def login(request):
+    return render(request,"login.html")
+
 def home(request):
-    return render(request,"home.html")
+    conn = psycopg2.connect(
+    database="bd", user='postgres', password='root', host='127.0.0.1', port= '5432')
+    cursor = conn.cursor()
+    str='SELECT * from public."user" where username = \''+request.GET["username"]+'\' and password = \''+request.GET["password"]+'\''
+    cursor.execute(str)
+    result = cursor.fetchall()
+    conn.close()
+
+    if result==[]:
+        return redirect('../')
+    else:
+        return render(request,"home.html")
 
 def predict(request):
     return render(request,"predict.html")
