@@ -1,25 +1,10 @@
 import random
 from django.shortcuts import redirect, render
-from jinja2 import Undefined
-import psycopg2
-import pickle
-
-def login(request):
-    return render(request,"login.html")
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
 
 def home(request):
-    conn = psycopg2.connect(
-    database="bd", user='postgres', password='root', host='127.0.0.1', port= '5432')
-    cursor = conn.cursor()
-    str='SELECT * from public."user" where username = \''+request.GET["username"]+'\' and password = \''+request.GET["password"]+'\''
-    cursor.execute(str)
-    result = cursor.fetchall()
-    conn.close()
-
-    if result==[]:
-        return redirect('../')
-    else:
-        return render(request,"home.html")
+    return render(request,"home.html")
 
 def predict(request):
     return render(request,"predict.html")
@@ -38,9 +23,11 @@ def result(request):
     except :
         return redirect('/predict/')
 
-    # load the model from disk
-    filename = 'finalized_model.sav'
-    model = pickle.load(open(filename, 'rb'))
+    df=pd.read_csv('static\DiabetesPrediction\data\diabetes.csv')
+    X=df[['Pregnancies','Glucose','BloodPressure','SkinThickness','Insulin','BMI','DiabetesPedigreeFunction','Age']].values
+    y=df['Outcome'].values
+    model=LogisticRegression(solver='newton-cg')
+    model.fit(X,y)
     prediction=model.predict([[Pregnancies,Glucose,BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age]])
     
     if prediction==[0]:
