@@ -20,7 +20,12 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login),
+<<<<<<< HEAD
     path('home/',views.home),
+=======
+    path('home/',views.login),
+
+>>>>>>> 2ab47c69be1e0c1ca8cb05bf5e78beed164ad0a9
     path('home/predict/', views.predict),
     path('home/predict/result', views.result),
 ]

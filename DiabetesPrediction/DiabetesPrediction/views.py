@@ -1,8 +1,21 @@
 import random
 from django.shortcuts import redirect, render
+<<<<<<< HEAD
 from jinja2 import Undefined
 import psycopg2
 import pickle
+
+def login(request):
+    return render(request,"login.html")
+=======
+from jinja2 import undefined
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network import MLPClassifier
+>>>>>>> 2ab47c69be1e0c1ca8cb05bf5e78beed164ad0a9
+
+import psycopg2
+
 
 def login(request):
     return render(request,"login.html")
