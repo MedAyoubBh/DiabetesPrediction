@@ -8,13 +8,20 @@ def login(request):
     return render(request,"login.html")
 
 def home(request):
-    conn = psycopg2.connect(
-    database="bd", user='postgres', password='root', host='127.0.0.1', port= '5432')
-    cursor = conn.cursor()
-    str='SELECT * from public."user" where username = \''+request.GET["username"]+'\' and password = \''+request.GET["password"]+'\''
-    cursor.execute(str)
-    result = cursor.fetchall()
-    conn.close()
+    result=[]
+
+    try:
+        if request.GET["username"]=='none':
+            return render(request,"home.html")
+        conn = psycopg2.connect(
+        database="bd", user='postgres', password='root', host='127.0.0.1', port= '5432')
+        cursor = conn.cursor()
+        str='SELECT * from public."user" where username = \''+request.GET["username"]+'\' and password = \''+request.GET["password"]+'\''
+        cursor.execute(str)
+        result = cursor.fetchall()
+        conn.close()
+    except:
+        pass
 
     if result==[]:
         return redirect('../')
